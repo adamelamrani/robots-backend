@@ -1,12 +1,12 @@
 require("dotenv").config();
-const debug = require("debug")("Server:my-server:");
+const debug = require("debug")("Server:Index");
 const express = require("express");
 const chalk = require("chalk");
 const morgan = require("morgan");
 
 const app = express();
 app.use(morgan("dev"));
-app.use(express.json()); // le añade una propiedad body al request.
+app.use(express.json());
 
 const server = (port) =>
   new Promise((resolve, reject) => {
