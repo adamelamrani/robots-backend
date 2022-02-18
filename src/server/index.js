@@ -3,6 +3,7 @@ const debug = require("debug")("Server:Index");
 const express = require("express");
 const chalk = require("chalk");
 const morgan = require("morgan");
+const router = require("./routes/robotsRoutes");
 
 const app = express();
 app.use(morgan("dev"));
@@ -22,4 +23,6 @@ const server = (port) =>
     });
   });
 
+app.use("/search", router);
+app.use("/robots", router);
 module.exports = server;
