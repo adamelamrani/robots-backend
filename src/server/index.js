@@ -23,6 +23,5 @@ const server = (port) =>
     });
   });
 
-app.use("/search", router);
-app.use("/robots", router);
+app.use("/", router);
 module.exports = server;
