@@ -9,9 +9,13 @@ const RobotSchema = new Schema({
   },
   speed: {
     type: Number,
+    min: 0,
+    max: 10,
   },
-  resistencia: {
+  resistance: {
     trype: Number,
+    min: 0,
+    max: 10,
   },
   creationDate: {
     type: Date,
