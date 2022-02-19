@@ -3,9 +3,11 @@ const { model, Schema } = require("mongoose");
 const RobotSchema = new Schema({
   name: {
     type: String,
+    required: true,
   },
   image: {
     type: String,
+    required: true,
   },
   speed: {
     type: Number,
@@ -13,12 +15,13 @@ const RobotSchema = new Schema({
     max: 10,
   },
   resistance: {
-    trype: Number,
+    type: Number,
     min: 0,
     max: 10,
   },
   creationDate: {
     type: Date,
+    default: Date.now,
   },
 });
 
