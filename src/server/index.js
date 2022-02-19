@@ -19,7 +19,7 @@ const server = (port) =>
     });
     app.on("error", (error) => {
       debug(chalk.blueBright(`Error on server’ ${error.message}`));
-      reject(Error, new Error(`Error on server’ ${error.message}`));
+      reject(new Error(`Error on server’ ${error.message}`));
     });
   });
 
