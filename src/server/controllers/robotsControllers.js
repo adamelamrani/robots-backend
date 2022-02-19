@@ -5,7 +5,7 @@ const Robot = require("../../db/models/Robot")
 const getRobots = async (req, res) => {
   const robotsArray = await Robot.find();
   res.json(robotsArray);
-  debug(chalk.bgGrey(`Requested "Robots" at ${req.url}`));
+  debug(chalk.bgGrey(`Requested "Robots"`));
 }
 
 module.exports = getRobots;
