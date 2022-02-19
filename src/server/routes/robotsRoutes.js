@@ -10,7 +10,6 @@ router.get("/robots", async (req, res) => {
   const robotsArray = await Robot.find();
   res.json(robotsArray);
   debug(chalk.bgGrey(`Requested "Robots" at ${req.url}`));
-  res.end();
 });
 
 module.exports = router;
