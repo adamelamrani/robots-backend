@@ -8,4 +8,22 @@ const getRobots = async (req, res) => {
   debug(chalk.bgGrey(`Requested "Robots"`));
 }
 
-module.exports = getRobots;
+const getIdRobot = async (req, res, next) => {
+  const {id} = req.params;
+
+  try{
+    const robot = await Robot.findById(id);
+    if (robot) {
+      res.json(robot);
+    }else {
+      const error = new Error("Robot not found. Beep-Boop");
+      error.code = 404;
+      next(error)
+    }
+  } catch (error) {
+    error.code = 400;
+    next(error);
+  };
+}
+
+module.exports = { getRobots, getIdRobot }
