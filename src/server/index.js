@@ -1,6 +1,7 @@
 require("dotenv").config();
 const debug = require("debug")("Server:Index");
 const express = require("express");
+const cors = require("cors");
 const chalk = require("chalk");
 const morgan = require("morgan");
 const router = require("./routes/robotsRoutes");
@@ -22,6 +23,6 @@ const server = (port) =>
       reject(new Error(`Error on server’ ${error.message}`));
     });
   });
-
+app.use(cors());
 app.use("/", router);
 module.exports = server;
