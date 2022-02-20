@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node src .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "npx jest --watchAll --verbose"
   },
   "repository": {
     "type": "git",
