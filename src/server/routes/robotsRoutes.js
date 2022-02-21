@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const bearerToken = require("../bearerToken");
 const {
   getRobots,
   getIdRobot,
@@ -12,8 +13,8 @@ const router = express.Router();
 
 router.get("/", getRobots);
 router.get("/:id", getIdRobot);
-router.delete("/:id", deleteRobot);
-router.delete("/update", updateRobot);
-router.post("/create", postRobot);
+router.delete("/:id", bearerToken, deleteRobot);
+router.put("/update", bearerToken, updateRobot);
+router.post("/create", bearerToken, postRobot);
 
 module.exports = router;
