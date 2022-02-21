@@ -5,6 +5,7 @@ const cors = require("cors");
 const chalk = require("chalk");
 const morgan = require("morgan");
 const router = require("./routes/robotsRoutes");
+const tokenAuthorization = require("./middlewares/login");
 
 const app = express();
 app.use(morgan("dev"));
@@ -24,5 +25,6 @@ const server = (port) =>
     });
   });
 app.use(cors());
-app.use("/", router);
+app.use("/robots", router);
+app.use("/login", tokenAuthorization);
 module.exports = server;

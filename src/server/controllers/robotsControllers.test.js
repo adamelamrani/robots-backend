@@ -1,5 +1,5 @@
 const Robot = require("../../db/models/Robot");
-const {getRobots, getIdRobot} = require("./robotsControllers");
+const {getRobots, getIdRobot, deleteRobot} = require("./robotsControllers");
 
 jest.mock("../../db/models/Robot");
 
@@ -50,6 +50,30 @@ describe("Given a getIdRobot controller", () => {
       await getIdRobot(req, res);
 
       expect(res.json).toHaveBeenCalledWith(robot);
+    });
+  });
+});
+
+describe("Given a deleteRobot controller", () => {
+  describe("When it receives a response", () => {
+    test("Then it should return an object with the id of the removed robot", async () => {
+      const idRemovedRobot = {
+        id: 1,
+      };
+
+      const res = {
+        json: jest.fn(),
+      };
+
+      const req = {
+        params: { id: 1 },
+      };
+
+      Robot.findByIdAndDelete = jest.fn().mockResolvedValue(idRemovedRobot);
+
+      await deleteRobot(req, res);
+
+      expect(res.json).toHaveBeenCalled();
     })
   })
 })
