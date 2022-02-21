@@ -1,14 +1,17 @@
-function bearerToken(req, res, next) {
+require("dotenv").config();
+const jwt = require("jsonwebtoken");
+
+const bearerToken = (req, res, next) => {
   try {
-    const {
-      headers: { authorization },
-    } = req;
-    const token = authorization.split(" ")[1];
+    const headerAuth = req.header("Authentication");
+    const token = headerAuth.replace("Bearer ", "");
     req.token = token;
+    jwt.verify(token, process.env.SECRET_KEY);
     next();
-  } catch (err) {
-    next();
+  } catch (error) {
+    res.json({ error: error.message });
+    next(error);
   }
-}
+};
 
 module.exports = bearerToken;
