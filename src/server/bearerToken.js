@@ -6,7 +6,7 @@ const bearerToken = (req, res, next) => {
     const headerAuth = req.header("Authentication");
     const token = headerAuth.replace("Bearer ", "");
     req.token = token;
-    const verify = jwt.verify(token, process.env.SECRET_KEY);
+    jwt.verify(token, process.env.SECRET_KEY);
     next();
   } catch (error) {
     res.json({ error: error.message });
