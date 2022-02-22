@@ -26,7 +26,7 @@ const tokenAuthorization = async (req, res, next) => {
       next(error);
     } else {
       const data = {
-        user: "Adam",
+        user,
       };
       const token = jwt.sign(data, process.env.SECRET_KEY);
       debug(chalk.blueBright(`Token: ${token}`));
