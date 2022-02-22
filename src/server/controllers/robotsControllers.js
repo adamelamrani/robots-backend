@@ -46,6 +46,7 @@ const deleteRobot = async (req, res, next) => {
 const updateRobot = async (req, res, next) => {
   const robot = req.body;
   try {
+    // eslint-disable-next-line no-underscore-dangle
     const updatedRobot = await Robot.findByIdAndUpdate(robot._id, robot);
     if (updatedRobot) {
       res.json(updatedRobot);
