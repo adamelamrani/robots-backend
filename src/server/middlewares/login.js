@@ -25,9 +25,7 @@ const tokenAuthorization = async (req, res, next) => {
       const error = new Error("Wrong credentials");
       next(error);
     } else {
-      const data = {
-        user,
-      };
+      const data = { user };
       const token = jwt.sign(data, process.env.SECRET_KEY);
       debug(chalk.blueBright(`Token: ${token}`));
       res.json({ token });
